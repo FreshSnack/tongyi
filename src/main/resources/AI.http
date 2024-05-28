@@ -1,0 +1,49 @@
+### CLOSE SSE
+POST https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation
+Content-Type: application/json
+Authorization: Bearer {{api-key}}
+
+{
+  "model": "qwen-turbo",
+  "input": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "你好，哪个公园距离我最近？"
+      }
+    ]
+  },
+  "parameters": {
+    "result_format": "message"
+  }
+}
+
+
+### OPEN SSE
+POST https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation
+Content-Type: application/json
+Authorization: Bearer {{api-key}}
+X-DashScope-SSE: enable
+
+{
+  "model": "qwen-turbo",
+  "input": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "你好"
+      }
+    ]
+  },
+  "parameters": {
+    "incremental_output": true
+  }
+}
